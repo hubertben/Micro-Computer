@@ -1,9 +1,9 @@
 
 
-class Store(command):
+class Store():
 
     def __init__(self, index):
         self.index = index
 
     def execute(self):
-        pass
+        return 'STORE', str(self.index)

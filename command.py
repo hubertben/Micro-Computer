@@ -1,10 +1,18 @@
-
+from add import Add
+from store import Store
+from load import Load
+from jump import Jump
 
 class Command:
 
-    def __init__(self, command, index):
-        self.command = command
-        self.index = index
+    def add(index):
+        return Add(index)
+    
+    def jump(index):
+        return Jump(index)
+        
+    def store(index):
+        return Store(index)
 
-    def execute(self):
-        return str(self.command) + " " + str(ram[self.index])
+    def load(index):
+        return Load(index)

@@ -1,9 +1,9 @@
 
 
-class Add(command):
+class Add():
 
     def __init__(self, index):
         self.index = index
 
     def execute(self):
-        pass
+        return 'ADD', str(self.index)

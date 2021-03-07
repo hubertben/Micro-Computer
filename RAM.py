@@ -1,4 +1,4 @@
-from command import Command
+from command import Command as com
 
 class RAM:
 
@@ -14,9 +14,24 @@ class RAM:
     def load_memory(self, memory):
         for index, item in enumerate(memory):
             self.registers.append((index,item))
+        self.clean_memory()
 
     def return_command(self, index):
         return self.registers[index]
         
     def clean_memory(self):
-        return
+        registers = []
+        for command in self.registers:
+            if(type(command[1]) == str):
+                c = command[1].split(' ')
+                
+                #attr = getattr(com, c[0])(c[1])
+                #concat = (command[0], attr)
+                #registers.append(concat)
+
+                registers.append((command[0], getattr(com, c[0])(c[1])))
+
+            else:
+                registers.append(command)
+
+        self.registers = registers[:]

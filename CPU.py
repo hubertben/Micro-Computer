@@ -26,8 +26,8 @@ class CPU:
 
     def tick(self):
         self.fetch()
-        self.decode()
         self.execute()
+
         self.program_counter += 1
         self.display_cpu_stats()
 
@@ -35,10 +35,7 @@ class CPU:
         self.instruction_register = self.ram_sticks[self.current_ram_stick].return_command(self.program_counter)
         return
 
-    def decode(self):
-        return
-
     def execute(self):
-        #self.instruction_register.execute()
+        print(self.instruction_register[1].execute())
         return 
 
