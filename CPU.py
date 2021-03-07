@@ -1,4 +1,4 @@
-
+from instruction import Instruction
 
 class CPU:
 
@@ -32,10 +32,11 @@ class CPU:
         self.display_cpu_stats()
 
     def fetch(self):
-        self.instruction_register = self.ram_sticks[self.current_ram_stick].return_command(self.program_counter)
+        inst = self.ram_sticks[self.current_ram_stick].return_command(self.program_counter)
+        self.instruction_register = Instruction(inst[0], inst[1])
         return
 
     def execute(self):
-        print(self.instruction_register[1].execute())
+        print(self.instruction_register.command.execute())
         return 
 
