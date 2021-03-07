@@ -37,6 +37,6 @@ class CPU:
         return
 
     def execute(self):
-        print(self.instruction_register.command.execute())
+        print(self.instruction_register.command.execute(self, self.ram_sticks[self.current_ram_stick]))
         return 
 
