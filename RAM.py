@@ -16,8 +16,6 @@ class RAM:
             item = item.strip()       
             if(self.is_digit(item)):
                 item = int(item)
-
-            print(index, item)
             self.registers.append([index, item])
         self.clean_memory()
 

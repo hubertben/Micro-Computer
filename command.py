@@ -3,25 +3,29 @@ from commands.store import Store
 from commands.load import Load
 from commands.jump import Jump
 from commands.compare import Compare
+from commands.display import Display
 
 class Command:
 
-    def END(index):
+    def END(index = 0):
         return 'END'
 
-    def add(index):
-        return Add(index)
+    def add(indecies):
+        return Add(indecies)
     
-    def jump(index):
-        return Jump(index)
+    def jump(indecies):
+        return Jump(indecies)
         
-    def store(index):
-        return Store(index)
+    def store(indecies):
+        return Store(indecies)
 
-    def load(index):
-        return Load(index)
+    def load(indecies):
+        return Load(indecies)
 
-    def compare(index):
-        return Compare(index)
+    def compare(indecies):
+        return Compare(indecies)
+
+    def display(indecies):
+        return Display(indecies)
 
         
