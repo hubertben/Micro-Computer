@@ -12,8 +12,13 @@ class RAM:
             print(r[0], '\t', r[1])
     
     def load_memory(self, memory):
-        for index, item in enumerate(memory):
-            self.registers.append((index,item))
+        for index, item in enumerate(memory):    
+            item = item.strip()
+            if(item.isdigit()):
+                item = int(item)
+
+            print((index, item))
+            self.registers.append((index, item))
         self.clean_memory()
 
     def return_command(self, index):

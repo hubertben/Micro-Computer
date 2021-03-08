@@ -1,4 +1,8 @@
-Add
-Store
-Jump
-Load
+load 6
+add 7 
+store 6
+jump 1
+0
+0
+1
+1
