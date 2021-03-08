@@ -1,4 +1,5 @@
 from instruction import Instruction
+import sys
 
 class CPU:
 
@@ -47,10 +48,12 @@ class CPU:
         
         string = str(inst[1]).split(' ')[0] 
         self.last_command = string
+        if(self.last_command == 'END'):
+            sys.exit()
 
         return
 
     def execute(self):
-        self = self.instruction_register.command.execute(self, self.ram_sticks[self.current_ram_stick])
+        self = self.instruction_register.command.execute(self, self.ram_sticks[self.current_ram_stick]) 
         return 
 

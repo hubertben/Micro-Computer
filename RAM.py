@@ -14,7 +14,8 @@ class RAM:
     def load_memory(self, memory):
         for index, item in enumerate(memory):    
             item = item.strip()
-            if(item.isdigit()):
+            
+            if(self.is_digit(item)):
                 item = int(item)
 
             print((index, item))
@@ -29,16 +30,25 @@ class RAM:
         for command in self.registers:
             if(type(command[1]) == str):
                 c = command[1].split(' ')
-                
-                #attr = getattr(com, c[0])(c[1])
-                #concat = (command[0], attr)
-                #registers.append(concat)
 
-                print((command[0], getattr(com, c[0])(c[1])))
-                registers.append((command[0], getattr(com, c[0])(c[1])))
+                print(c)
+                
+                attr = getattr(com, c[0])(c[1])
+                concat = (command[0], attr)
+                registers.append(concat)
+
+                #print((command[0], getattr(com, c[0])(c[1])))
+                #registers.append((command[0], getattr(com, c[0])(c[1])))
 
             else:
                 print(command)
                 registers.append(command)
 
         self.registers = registers[:]
+
+    def is_digit(self, n):
+        try:
+            int(n)
+            return True
+        except ValueError:
+            return  False
