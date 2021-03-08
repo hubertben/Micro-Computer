@@ -23,3 +23,5 @@ class Command:
 
     def compare(index):
         return Compare(index)
+
+        

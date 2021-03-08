@@ -1,6 +1,8 @@
 from instruction import Instruction
 import sys
 
+DNI_list = ['JUMP', 'COMPARE']
+
 class CPU:
 
     def __init__(self):
@@ -35,7 +37,7 @@ class CPU:
         self.execute()
 
         
-        if(self.last_command != 'JUMP'):
+        if(self.last_command not in DNI_list):
             self.program_counter += 1
 
         self.display_cpu_stats()
