@@ -1,0 +1,9 @@
+load 6
+compare 8
+END 1
+add 6 7 
+store 6
+jump 1
+0
+1
+19

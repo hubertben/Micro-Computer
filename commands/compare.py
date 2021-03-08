@@ -1,17 +1,21 @@
+from commands.Template import Template
+
 # Compares the value in the register index to the accumulator
 # If they are equal, execute line under if
 # If they are not equal, execute 2 lines under if
 
-class Compare():
+class Compare(Template):
 
-    def __init__(self, index):
-        self.index = int(index)
+    def __init__(self, indecies):
+        self.indecies = indecies
 
     def __repr__(self):
-        return 'COMPARE ' + str(self.index)
+        t = Template.__repr__(self, 'COMPARE')
+        return t
 
     def execute(self, cpu, ram):
-        value_1 = ram.registers[self.index][1]
+        index = int(self.indecies[0])
+        value_1 = ram.registers[index][1]
         value_2 = cpu.accumulator
 
         if(value_1 == value_2):

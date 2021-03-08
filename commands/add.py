@@ -1,15 +1,22 @@
 
+from commands.Template import Template
 
-class Add():
+class Add(Template):
 
-    def __init__(self, index):
-        self.index = int(index)
+    def __init__(self, indecies):
+        self.indecies = indecies
 
     def __repr__(self):
-        return 'ADD ' + str(self.index)
+        t = Template.__repr__(self, 'ADD')
+        return t
 
     def execute(self, cpu, ram):
-        value_1 = ram.registers[self.index][1]
-        value_2 = cpu.accumulator
-        cpu.accumulator = value_1 + value_2
+        s = 0
+        for i in self.indecies:
+            s += ram.registers[int(i)][1]
+
+        if(len(self.indecies) == 1):
+            cpu.accumulator += s
+        else:
+            cpu.accumulator = s
         return 

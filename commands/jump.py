@@ -1,13 +1,15 @@
+from commands.Template import Template
 
+class Jump(Template):
 
-class Jump:
-
-    def __init__(self, index):
-        self.index = int(index)
+    def __init__(self, indecies):
+        self.indecies = indecies
 
     def __repr__(self):
-        return 'JUMP ' + str(self.index)
+        t = Template.__repr__(self, 'JUMP')
+        return t
 
     def execute(self, cpu, ram):
-        cpu.program_counter = self.index
+        index = int(self.indecies[0])
+        cpu.program_counter = index
         return

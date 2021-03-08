@@ -1,15 +1,17 @@
+from commands.Template import Template
 
+class Load(Template):
 
-class Load():
-
-    def __init__(self, index):
-        self.index = int(index)
+    def __init__(self, indecies):
+        self.indecies = indecies
 
     def __repr__(self):
-        return 'LOAD ' + str(self.index)
+        t = Template.__repr__(self, 'LOAD')
+        return t
 
     def execute(self, cpu, ram):
-        value = ram.registers[self.index][1]
+        index = int(self.indecies[0])
+        value = ram.registers[index][1]
         cpu.accumulator = value
         return 
         
