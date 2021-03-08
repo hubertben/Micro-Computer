@@ -29,9 +29,11 @@ class RAM:
                 #concat = (command[0], attr)
                 #registers.append(concat)
 
+                print((command[0], getattr(com, c[0])(c[1])))
                 registers.append((command[0], getattr(com, c[0])(c[1])))
 
             else:
+                print(command)
                 registers.append(command)
 
         self.registers = registers[:]

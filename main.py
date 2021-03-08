@@ -9,9 +9,8 @@ r.display_registers()
 c = CPU()
 c.load_ram(r)
 
-c.tick()
 
 
 
 
-#c.loop(10000)
+c.loop(10000)

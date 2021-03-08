@@ -10,33 +10,47 @@ class CPU:
         self.ram_sticks = []
         self.current_ram_stick = 0
 
+        self.last_command = None
+
     def display_cpu_stats(self):
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         print('Program Counter:', self.program_counter)
         print('Instruction Register:', self.instruction_register)
         print('Accumulator:', self.accumulator)
 
+        #print('\n', self.ram_sticks[self.current_ram_stick].registers)
+
     
     def load_ram(self, ram_stick):
         self.ram_sticks.append(ram_stick)
 
     def loop(self, iterator):
-        for cycle in iterator:
+        for cycle in range(iterator):
             self.tick()
 
     def tick(self):
+
         self.fetch()
         self.execute()
 
-        self.program_counter += 1
+        
+        if(self.last_command != 'JUMP'):
+            self.program_counter += 1
+
         self.display_cpu_stats()
+        print('==============================================')
+        
 
     def fetch(self):
         inst = self.ram_sticks[self.current_ram_stick].return_command(self.program_counter)
         self.instruction_register = Instruction(inst[0], inst[1])
+        
+        string = str(inst[1]).split(' ')[0] 
+        self.last_command = string
+
         return
 
     def execute(self):
-        print(self.instruction_register.command.execute(self, self.ram_sticks[self.current_ram_stick]))
+        self = self.instruction_register.command.execute(self, self.ram_sticks[self.current_ram_stick])
         return 
 
