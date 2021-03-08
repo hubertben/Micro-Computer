@@ -1,21 +1,20 @@
-load 10
-store 7
-jump 10
+jump 8
 END 1
 0
 0
 1
-0
+60
 1
 0
-load 7
-compare 5
-jump 3
-display 8
-add 8 9
-store 4
-load 8
-store 9
-load 4
-store 8
-jump 10
+load 5
+compare 3
+jump 1
+add 6 7
+store 2
+load 6
+store 7
+load 2
+store 6
+add 3 4
+store 3
+jump 8

@@ -21,19 +21,23 @@ class CPU:
         print('Instruction Register:', self.instruction_register)
         print('Accumulator:', self.accumulator)
 
+        for r in self.ram_sticks[self.current_ram_stick].registers:
+            print(r)
+
     def load_ram(self, ram_stick):
         self.ram_sticks.append(ram_stick)
 
-    def loop(self, iterator):
-        for cycle in range(iterator):
+    def run(self):
+        while(True):
             self.tick()
+            self.display_cpu_stats()
 
     def tick(self):
         self.fetch()
         self.execute()
         if(self.last_command not in DNI_list):
             self.program_counter += 1
-        self.display_cpu_stats()
+        
         
     def fetch(self):
         inst = self.ram_sticks[self.current_ram_stick].return_command(self.program_counter)

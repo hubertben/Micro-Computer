@@ -8,4 +8,4 @@ r.load_memory(fr.read_commands())
 c = CPU()
 c.load_ram(r)
 
-c.loop(100)
+c.run()
