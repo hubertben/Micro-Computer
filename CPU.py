@@ -21,9 +21,6 @@ class CPU:
         print('Instruction Register:', self.instruction_register)
         print('Accumulator:', self.accumulator)
 
-        #print('\n', self.ram_sticks[self.current_ram_stick].registers)
-
-    
     def load_ram(self, ram_stick):
         self.ram_sticks.append(ram_stick)
 
@@ -32,27 +29,19 @@ class CPU:
             self.tick()
 
     def tick(self):
-
         self.fetch()
         self.execute()
-
-        
         if(self.last_command not in DNI_list):
             self.program_counter += 1
-
         self.display_cpu_stats()
-        print('==============================================')
         
-
     def fetch(self):
         inst = self.ram_sticks[self.current_ram_stick].return_command(self.program_counter)
         self.instruction_register = Instruction(inst[0], inst[1])
+        self.last_command = str(inst[1]).split(' ')[0] 
         
-        string = str(inst[1]).split(' ')[0] 
-        self.last_command = string
         if(self.last_command == 'END'):
             sys.exit()
-
         return
 
     def execute(self):
