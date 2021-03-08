@@ -1,8 +1,8 @@
-from add import Add
-from store import Store
-from load import Load
-from jump import Jump
-from compare import Compare
+from commands.add import Add
+from commands.store import Store
+from commands.load import Load
+from commands.jump import Jump
+from commands.compare import Compare
 
 class Command:
 
